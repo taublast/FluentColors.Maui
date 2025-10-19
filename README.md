@@ -108,48 +108,6 @@ var color4 = ColorExtensions.FromHex("#803D9BD7"); // 50% opacity
 var color5 = ColorExtensions.FromHexRGBA("#3D9BD780"); // 50% opacity
 ```
 
-### Chaining Methods
-
-All extension methods are chainable for fluent syntax:
-
-```csharp
-// Chain multiple transformations
-var customColor = AppColors.Primary
-    .Lighten(0.2f)
-    .WithOpacity(80);
-
-// Complex transformations
-var accentVariant = AppColors.ColorAccent
-    .Darken(0.1f)
-    .WithAlpha(0.9f);
-
-// Use in UI assignments
-myLabel.TextColor = AppColors.Gray500.Lighten(0.3f);
-myButton.BackgroundColor = AppColors.Primary.WithOpacity(85);
-```
-
-### Practical Examples
-
-```csharp
-// Hover effect
-buttonNormal.BackgroundColor = AppColors.Primary;
-buttonHover.BackgroundColor = AppColors.Primary.Lighten(0.15f);
-
-// Disabled state
-buttonDisabled.BackgroundColor = AppColors.Primary.WithOpacity(40);
-
-// Shadow effect
-shadow.Color = AppColors.Black.WithAlpha(0.3f);
-
-// Theme variations
-var lightThemeBg = AppColors.Gray100.Lighten(0.5f);
-var darkThemeBg = AppColors.Gray900.Darken(0.2f);
-
-// Gradient colors
-var gradientStart = AppColors.Primary;
-var gradientEnd = AppColors.Primary.Darken(0.3f).WithOpacity(80);
-```
-
 
 
 ## Troubleshooting
