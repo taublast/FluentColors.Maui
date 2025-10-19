@@ -54,9 +54,10 @@ You can additionally manage options by setting these tags inside your `.csproj``
 | `ColorResourcesNamespace` | `$(RootNamespace)` | Namespace for the generated class |
 
 
+
 ## Fluent Extension Methods
 
-The package includes powerful fluent extension methods for color manipulation:
+The package includes some fluent extension methods for color manipulation:
 
 ### Opacity & Alpha
 
