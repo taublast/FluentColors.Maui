@@ -3,9 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/v/FluentColors.Maui.svg)](https://www.nuget.org/packages/FluentColors.Maui/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Fluent, strongly-typed color resources for .NET MAUI! 🎨**
-
-Access colors declared inside MAUI `Colors.xaml` from code behind, with IntelliSense support, compile-time safety, and additional extension methods as a bonus.   
+Access colors declared inside .NET MAUI `Colors.xaml` 🎨 from code behind, with IntelliSense support.
 
 ## How It Works
 
@@ -13,19 +11,19 @@ Access colors declared inside MAUI `Colors.xaml` from code behind, with IntelliS
 2. **Build your project** - the generator runs automatically
 3. **Use your colors** with IntelliSense support from code-behind!
 
-The generator finds `Resources/Colors.xaml`, parses all color definitions, and creates `Resources/AppColors.cs` with strongly-typed properties + fluent extensions!
+The source code generator finds `Resources/Colors.xaml`, parses all color definitions, and creates `Resources/AppColors.cs` with strongly-typed properties + fluent extensions!
 
 **Before**  
 ```csharp
-label.TextColor = App.Current.Resources["ColorAccent"] as Color; // No IntelliSense, runtime errors
+label.TextColor = App.Current.Resources["ColorAccent"] as Color; // No IntelliSense, possible runtime errors
 ```
 
 **After** 
 ```csharp
 
-label.TextColor = AppColors.ColorAccent; 
+label.TextColor = AppColors.ColorAccent; // IntelliSense support
 
-// Bonus: some extensions!
+// Bonus: additional color extensions!
 var colorAccentLigther = AppColors.Primary.Lighten(0.3f);
 ```
 
@@ -42,7 +40,7 @@ dotnet add package FluentColors.Maui
 Or add to your `.csproj`:
 
 ```xml
-<PackageReference Include="FluentColors.Maui" Version="2.0.0" />
+<PackageReference Include="FluentColors.Maui" Version="1.0.0.5" />
 ```
 
 
@@ -63,12 +61,12 @@ The generator is smart about regeneration:
 
 You'll see:
 - `✓ Successfully generated AppColors.cs` - File was regenerated
-- `⚡ AppColors.cs is up-to-date, skipping generation` - Nothing changed
+- `⚡ AppColors.cs is up-to-date, skipping generation` - Nothing changed, no conflict with HotReload
 
 
 ## Requirements
 
-- .NET MAUI 7.0+
+- .NET MAUI 8.0+
 - `Resources/Colors.xaml` file in standard MAUI format
 
 ### Color Categories
