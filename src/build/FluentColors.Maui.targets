@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <!-- Default configuration -->
+    <ColorResourcesGeneratorEnabled Condition="'$(ColorResourcesGeneratorEnabled)' == ''">true</ColorResourcesGeneratorEnabled>
+    <ColorResourcesClassName Condition="'$(ColorResourcesClassName)' == ''">AppColors</ColorResourcesClassName>
+    <ColorResourcesNamespace Condition="'$(ColorResourcesNamespace)' == ''">$(RootNamespace)</ColorResourcesNamespace>
+
+    <!-- Auto-detect Colors.xaml in Resources folder -->
+    <_ColorsXamlPath Condition="Exists('$(MSBuildProjectDirectory)\Resources\Colors.xaml')">$(MSBuildProjectDirectory)\Resources\Colors.xaml</_ColorsXamlPath>
+
+    <!-- Output path: same directory as Colors.xaml -->
+    <_ResourcesColorsOutputPath Condition="'$(_ColorsXamlPath)' != ''">$([System.IO.Path]::GetDirectoryName($(_ColorsXamlPath)))\$(ColorResourcesClassName).cs</_ResourcesColorsOutputPath>
+  </PropertyGroup>
+
+  <!-- Create item for incremental build tracking -->
+  <ItemGroup>
+    <_ColorsXamlFiles Include="$(_ColorsXamlPath)" Condition="'$(_ColorsXamlPath)' != ''" />
+  </ItemGroup>
+
+  <UsingTask TaskName="FluentColors.Maui.GenerateColorResourcesTask"
+             AssemblyFile="$(MSBuildThisFileDirectory)..\lib\netstandard2.0\FluentColors.Maui.dll" />
+
+  <Target Name="GenerateColorResources"
+          BeforeTargets="BeforeBuild;CoreCompile"
+          Condition="'$(ColorResourcesGeneratorEnabled)' == 'true'"
+          Inputs="@(_ColorsXamlFiles)"
+          Outputs="$(_ResourcesColorsOutputPath)">
+
+    <!-- Run the generator task - incremental build handled by Inputs/Outputs -->
+    <GenerateColorResourcesTask
+      Condition="'$(_ColorsXamlPath)' != ''"
+      ColorsXamlPath="$(_ColorsXamlPath)"
+      OutputPath="$(_ResourcesColorsOutputPath)"
+      Namespace="$(ColorResourcesNamespace)"
+      ClassName="$(ColorResourcesClassName)" />
+
+    <!-- Always include the generated file in compilation if it exists -->
+    <ItemGroup Condition="'$(_ResourcesColorsOutputPath)' != '' AND Exists('$(_ResourcesColorsOutputPath)')">
+      <Compile Include="$(_ResourcesColorsOutputPath)" />
+    </ItemGroup>
+
+  </Target>
+
+  <!-- Show helpful message on package install -->
+  <Target Name="FluentColorsWelcome" AfterTargets="Restore">
+    <Message Importance="high" Text="✓ FluentColors.Maui installed successfully! 🎨" />
+    <Message Importance="high" Text="  Colors.xaml will be automatically processed on build" />
+    <Message Importance="high" Text="  Generated class: $(ColorResourcesClassName) with fluent extensions!" />
+    <Message Importance="normal" Text="" />
+    <Message Importance="normal" Text="Configuration (optional):" />
+    <Message Importance="normal" Text="  - Disable: &lt;ColorResourcesGeneratorEnabled&gt;false&lt;/ColorResourcesGeneratorEnabled&gt;" />
+    <Message Importance="normal" Text="  - Custom class name: &lt;ColorResourcesClassName&gt;YourName&lt;/ColorResourcesClassName&gt;" />
+    <Message Importance="normal" Text="  - Custom namespace: &lt;ColorResourcesNamespace&gt;YourNamespace&lt;/ColorResourcesNamespace&gt;" />
+  </Target>
+
+</Project>
