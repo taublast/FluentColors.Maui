@@ -3,7 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/v/FluentColors.Maui.svg)](https://www.nuget.org/packages/FluentColors.Maui/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Access colors declared inside .NET MAUI `Colors.xaml` 🎨 from code behind, with IntelliSense support.
+Access colors declared inside .NET MAUI `Resources/Colors.xaml` 🎨 from code behind, with IntelliSense support.
 
 ## How It Works
 
@@ -11,7 +11,6 @@ Access colors declared inside .NET MAUI `Colors.xaml` 🎨 from code behind, wit
 2. **Source code generator runs** - a new file `AppColors.cs` is created
 3. **Use your colors** with IntelliSense support from code-behind!
 
-The source code generator finds `Resources/Colors.xaml`, parses all color definitions, and creates `Resources/AppColors.cs` with strongly-typed properties + fluent extensions!  
 Runs only if `Colors.xaml` has changed.
 
 **Before**  
@@ -26,8 +25,6 @@ label.TextColor = AppColors.ColorAccent; // IntelliSense support, compile-time s
 // Bonus: fluent color extensions!
 var colorPrimaryLightest = AppColors.Primary.Lighten(0.3f);
 ```
-
-Customization project tags provided to change auto-generated class name etc.
 
 ---
 
@@ -45,7 +42,6 @@ Or add to your `.csproj`:
 <PackageReference Include="FluentColors.Maui" Version="1.0.0.5" />
 ```
 
----
 
 ## Settings
 
@@ -57,7 +53,6 @@ You can additionally manage options by setting these tags inside your `.csproj``
 | `ColorResourcesClassName` | `AppColors` | Name of the generated class |
 | `ColorResourcesNamespace` | `$(RootNamespace)` | Namespace for the generated class |
 
- ---
 
 ## Fluent Extension Methods
 
@@ -154,7 +149,7 @@ var gradientStart = AppColors.Primary;
 var gradientEnd = AppColors.Primary.Darken(0.3f).WithOpacity(80);
 ```
 
----
+
 
 ## Troubleshooting
 
@@ -180,7 +175,7 @@ var gradientEnd = AppColors.Primary.Darken(0.3f).WithOpacity(80);
 **Issue**: Compilation errors for removed colors
 **Solution**: This is expected! The generator provides compile-time safety. Update your code to remove references to deleted colors.
 
----
+
 
 ## Contributing
 
