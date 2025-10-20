@@ -39,7 +39,10 @@ dotnet add package FluentColors.Maui
 Or add to your `.csproj`:
 
 ```xml
-<PackageReference Include="FluentColors.Maui" Version="1.0.0.5" />
+  <PackageReference Include="FluentColors.Maui" Version="1.0.0.5">
+    <PrivateAssets>all</PrivateAssets>
+    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+  </PackageReference>
 ```
 
 
