@@ -20,7 +20,7 @@ label.TextColor = App.Current.Resources["ColorAccent"] as Color; // possible run
 
 **After**
 ```csharp
-label.TextColor = AppColors.Accent; // IntelliSense support, compile-time safety
+label.TextColor = AppColors.Accent; // IntelliSense support, compile-time safety 😊
 
 // Bonus: fluent color extensions!
 var colorPrimaryLightest = AppColors.Primary.Lighten(0.3f);
