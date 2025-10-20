@@ -15,12 +15,12 @@ Runs only if `Colors.xaml` has changed.
 
 **Before**  
 ```csharp
-label.TextColor = App.Current.Resources["ColorAccent"] as Color; // No IntelliSense, possible runtime errors
+label.TextColor = App.Current.Resources["ColorAccent"] as Color; // possible runtime errors
 ```
 
 **After**
 ```csharp
-label.TextColor = AppColors.ColorAccent; // IntelliSense support, compile-time safety
+label.TextColor = AppColors.Accent; // IntelliSense support, compile-time safety
 
 // Bonus: fluent color extensions!
 var colorPrimaryLightest = AppColors.Primary.Lighten(0.3f);
