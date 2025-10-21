@@ -15,7 +15,7 @@ Runs only if `Colors.xaml` has changed.
 
 **Before**  
 ```csharp
-label.TextColor = App.Current.Resources["ColorAccent"] as Color; // no IntelliSense, typos possible 
+label.TextColor = App.Current.Resources["Accent"] as Color; // no IntelliSense, typos possible 
 ```
 
 **After**
