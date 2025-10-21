@@ -48,7 +48,7 @@ Or add to your `.csproj`:
 
 ## Settings
 
-You can additionally manage options by setting these tags inside your `.csproj`` file:
+You can additionally manage options by setting these tags inside your `.csproj` file:
 
 | Setting | Default | Description |
 |---------|---------|-------------|
