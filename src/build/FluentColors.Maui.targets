@@ -7,8 +7,12 @@
     <ColorResourcesClassName Condition="'$(ColorResourcesClassName)' == ''">AppColors</ColorResourcesClassName>
     <ColorResourcesNamespace Condition="'$(ColorResourcesNamespace)' == ''">$(RootNamespace)</ColorResourcesNamespace>
 
-    <!-- Auto-detect Colors.xaml in Resources folder -->
-    <_ColorsXamlPath Condition="Exists('$(MSBuildProjectDirectory)\Resources\Colors.xaml')">$(MSBuildProjectDirectory)\Resources\Colors.xaml</_ColorsXamlPath>
+  <!-- Allow overriding Colors.xaml location -->
+  <_ColorsXamlPath Condition="'$(ColorResourcesXamlPath)' != '' AND $([System.IO.Path]::IsPathRooted('$(ColorResourcesXamlPath)'))">$(ColorResourcesXamlPath)</_ColorsXamlPath>
+  <_ColorsXamlPath Condition="'$(ColorResourcesXamlPath)' != '' AND !$([System.IO.Path]::IsPathRooted('$(ColorResourcesXamlPath)'))">$(MSBuildProjectDirectory)\$(ColorResourcesXamlPath)</_ColorsXamlPath>
+
+  <!-- Auto-detect Colors.xaml in Resources folder -->
+  <_ColorsXamlPath Condition="'$(_ColorsXamlPath)' == '' AND Exists('$(MSBuildProjectDirectory)\Resources\Colors.xaml')">$(MSBuildProjectDirectory)\Resources\Colors.xaml</_ColorsXamlPath>
 
     <!-- Output path: same directory as Colors.xaml -->
     <_ResourcesColorsOutputPath Condition="'$(_ColorsXamlPath)' != ''">$([System.IO.Path]::GetDirectoryName($(_ColorsXamlPath)))\$(ColorResourcesClassName).cs</_ResourcesColorsOutputPath>
@@ -53,6 +57,7 @@
     <Message Importance="normal" Text="  - Disable: &lt;ColorResourcesGeneratorEnabled&gt;false&lt;/ColorResourcesGeneratorEnabled&gt;" />
     <Message Importance="normal" Text="  - Custom class name: &lt;ColorResourcesClassName&gt;YourName&lt;/ColorResourcesClassName&gt;" />
     <Message Importance="normal" Text="  - Custom namespace: &lt;ColorResourcesNamespace&gt;YourNamespace&lt;/ColorResourcesNamespace&gt;" />
+    <Message Importance="normal" Text="  - Custom XAML path: &lt;ColorResourcesXamlPath&gt;Resources/Styles/Colors.xaml&lt;/ColorResourcesXamlPath&gt;" />
   </Target>
 
 </Project>
