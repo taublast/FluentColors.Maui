@@ -57,7 +57,7 @@
     <Message Importance="normal" Text="  - Disable: &lt;ColorResourcesGeneratorEnabled&gt;false&lt;/ColorResourcesGeneratorEnabled&gt;" />
     <Message Importance="normal" Text="  - Custom class name: &lt;ColorResourcesClassName&gt;YourName&lt;/ColorResourcesClassName&gt;" />
     <Message Importance="normal" Text="  - Custom namespace: &lt;ColorResourcesNamespace&gt;YourNamespace&lt;/ColorResourcesNamespace&gt;" />
-    <Message Importance="normal" Text="  - Custom XAML path: &lt;ColorResourcesXamlPath&gt;Resources/Styles/Colors.xaml&lt;/ColorResourcesXamlPath&gt;" />
+    <Message Importance="normal" Text="  - Custom XAML path: &lt;ColorResourcesXamlPath&gt;YourColorResourcesXamlPath&lt;/ColorResourcesXamlPath&gt;" />
   </Target>
 
 </Project>
