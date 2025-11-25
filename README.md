@@ -118,7 +118,7 @@
   
   ### Colors.xaml not found
   **Issue**: Build warning "Colors.xaml not found at: ..."
-  **Solution**: Ensure `Resources/Colors.xaml` exists in your project
+  **Solution**: Ensure `Resources/Colors.xaml` exists in your project or set a custom path using `ColorResourcesXamlPath` setting in your `.csproj` file
   
   ### Generated class not found
   **Issue**: "The type or namespace name 'AppColors' could not be found"
