@@ -11,8 +11,9 @@
   <_ColorsXamlPath Condition="'$(ColorResourcesXamlPath)' != '' AND $([System.IO.Path]::IsPathRooted('$(ColorResourcesXamlPath)'))">$(ColorResourcesXamlPath)</_ColorsXamlPath>
   <_ColorsXamlPath Condition="'$(ColorResourcesXamlPath)' != '' AND !$([System.IO.Path]::IsPathRooted('$(ColorResourcesXamlPath)'))">$(MSBuildProjectDirectory)\$(ColorResourcesXamlPath)</_ColorsXamlPath>
 
-  <!-- Auto-detect Colors.xaml in Resources folder -->
+  <!-- Auto-detect Colors.xaml in common locations -->
   <_ColorsXamlPath Condition="'$(_ColorsXamlPath)' == '' AND Exists('$(MSBuildProjectDirectory)\Resources\Colors.xaml')">$(MSBuildProjectDirectory)\Resources\Colors.xaml</_ColorsXamlPath>
+  <_ColorsXamlPath Condition="'$(_ColorsXamlPath)' == '' AND Exists('$(MSBuildProjectDirectory)\Resources\Styles\Colors.xaml')">$(MSBuildProjectDirectory)\Resources\Styles\Colors.xaml</_ColorsXamlPath>
 
     <!-- Output path: same directory as Colors.xaml -->
     <_ResourcesColorsOutputPath Condition="'$(_ColorsXamlPath)' != ''">$([System.IO.Path]::GetDirectoryName($(_ColorsXamlPath)))\$(ColorResourcesClassName).cs</_ResourcesColorsOutputPath>

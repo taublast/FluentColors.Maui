@@ -55,10 +55,24 @@
   | `ColorResourcesGeneratorEnabled` | `true` | Enable/disable the generator |
   | `ColorResourcesClassName` | `AppColors` | Name of the generated class |
   | `ColorResourcesNamespace` | `$(RootNamespace)` | Namespace for the generated class |
-  | `ColorResourcesXamlPath`  | `(auto-detected)` | Custom path to Colors.xaml — supports both absolute and project-relative paths |
-  
-  
-  
+  | `ColorResourcesXamlPath`  | *(auto-detected)* | **Optional.** By default, looks for Colors.xaml in `Resources\` or `Resources\Styles\`. Set this to specify a custom location. Supports both absolute and project-relative paths. |
+
+  ### Custom Colors.xaml Path Example
+
+  If your Colors.xaml is in a non-standard location, specify the path in your `.csproj`:
+
+  ```xml
+  <PropertyGroup>
+    <!-- Relative path (relative to project directory) -->
+    <ColorResourcesXamlPath>Themes\AppColors.xaml</ColorResourcesXamlPath>
+
+    <!-- Or use an absolute path -->
+    <!-- <ColorResourcesXamlPath>C:\Shared\MyColors.xaml</ColorResourcesXamlPath> -->
+  </PropertyGroup>
+  ```
+
+
+
   ## Fluent Extension Methods
   
   The package includes some fluent extension methods for color manipulation:
@@ -118,7 +132,7 @@
   
   ### Colors.xaml not found
   **Issue**: Build warning "Colors.xaml not found at: ..."
-  **Solution**: Ensure `Resources/Colors.xaml` exists in your project or set a custom path using `ColorResourcesXamlPath` setting in your `.csproj` file
+  **Solution**: Ensure Colors.xaml exists at `Resources\Colors.xaml` or `Resources\Styles\Colors.xaml`. For other locations, set a custom path using `ColorResourcesXamlPath` setting in your `.csproj` file
   
   ### Generated class not found
   **Issue**: "The type or namespace name 'AppColors' could not be found"
