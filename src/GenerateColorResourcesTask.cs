@@ -408,14 +408,17 @@ namespace FluentColors.Maui
 
         private void GenerateColorProperty(StringBuilder sb, string key, string hexValue)
         {
+            // Sanitize property name: replace hyphens with underscores for valid C# identifiers
+            string propertyName = key.Replace("-", "_");
+
             // Convert property name to camelCase for private field
-            string fieldName = "_" + char.ToLowerInvariant(key[0]) + key.Substring(1);
+            string fieldName = "_" + char.ToLowerInvariant(propertyName[0]) + propertyName.Substring(1);
 
             sb.AppendLine($"        private static Microsoft.Maui.Graphics.Color? {fieldName};");
             sb.AppendLine("        /// <summary>");
             sb.AppendLine($"        /// Color resource: {key} ({hexValue})");
             sb.AppendLine("        /// </summary>");
-            sb.AppendLine($"        public static Microsoft.Maui.Graphics.Color {key}");
+            sb.AppendLine($"        public static Microsoft.Maui.Graphics.Color {propertyName}");
             sb.AppendLine("        {");
             sb.AppendLine("            get");
             sb.AppendLine("            {");

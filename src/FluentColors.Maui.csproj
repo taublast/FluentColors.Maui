@@ -8,9 +8,8 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>FluentColors.Maui</PackageId>
-    <Version>1.0.0.5</Version>
-    <Authors>Nick Kovalsky aka AppoMobi</Authors>
-    <Company>AppoMobi</Company>
+    <Version>1.0.0.6</Version>
+    <Authors>Nick Kovalsky aka AppoMobi and contributors</Authors>
     <Description>Fluent, strongly-typed color resources with IntelliSense support for .NET MAUI auto-generated from Colors.xaml. Adds colors extensions methods (Lighten, Darken, WithOpacity, etc.) as a bonus.</Description>
     <PackageTags>maui;xaml;colors;codegen;msbuild;resources;generator;fluent;extensions</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

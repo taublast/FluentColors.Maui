@@ -141,6 +141,11 @@
   2. Check that `Resources/AppColors.cs` was created
   3. Verify the namespace matches your `RootNamespace`
   
+  ### Generated name is different
+  **Issue**: "The name in XAML was 'SupaColor-100' and I can't find it."  
+  **Solution**:
+  Please look for 'SupaColor_100' in code-behind.	 
+
   ### IntelliSense not showing colors
   **Issue**: Can't see color properties in autocomplete
   **Solution**:
